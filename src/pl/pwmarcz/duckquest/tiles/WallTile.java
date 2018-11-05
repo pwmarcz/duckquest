@@ -5,4 +5,9 @@ public class WallTile implements Tile {
     public char getChar() {
         return '#';
     }
+
+    @Override
+    public boolean canEnter() {
+        return false;
+    }
 }

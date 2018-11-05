@@ -19,4 +19,9 @@ public class Player {
     public char getChar() {
         return '@';
     }
+
+    public void moveTo(int y, int x) {
+        this.y = y;
+        this.x = x;
+    }
 }

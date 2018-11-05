@@ -63,4 +63,13 @@ public class GameMap {
     public int getHeight() { return height; }
     public Tile getTile(int y, int x) { return tiles[y][x]; }
     public Player getPlayer() { return player; }
+
+    public void movePlayer(int dy, int dx) {
+        int newX = player.getX() + dx;
+        int newY = player.getY() + dy;
+        Tile newTile = getTile(newY, newX);
+        if (newTile.canEnter()) {
+            player.moveTo(newY, newX);
+        }
+    }
 }
