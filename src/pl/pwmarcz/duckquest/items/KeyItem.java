@@ -5,4 +5,9 @@ public class KeyItem implements Item {
     public char getChar() {
         return '{';
     }
+
+    @Override
+    public String getName() {
+        return "key";
+    }
 }

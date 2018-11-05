@@ -1,5 +1,6 @@
 package pl.pwmarcz.duckquest;
 
+import pl.pwmarcz.duckquest.items.Item;
 import pl.pwmarcz.duckquest.items.KeyItem;
 import pl.pwmarcz.duckquest.tiles.*;
 
@@ -75,5 +76,19 @@ public class GameMap {
         if (newTile.canEnter()) {
             player.moveTo(newX, newY);
         }
+    }
+
+    public Item pickUp() {
+        Tile tile = getPlayerTile();
+        Item item = tile.getItem();
+        if (item != null) {
+            tile.removeItem();
+            player.addItem(item);
+        }
+        return item;
+    }
+
+    private Tile getPlayerTile() {
+        return getTile(player.getX(), player.getY());
     }
 }

@@ -14,4 +14,9 @@ public abstract class AbstractBaseTile implements Tile {
     public Item getItem() {
         return item;
     }
+
+    public void removeItem() {
+        assert item != null;
+        item = null;
+    }
 }

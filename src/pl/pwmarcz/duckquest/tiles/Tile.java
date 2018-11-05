@@ -9,4 +9,6 @@ public interface Tile {
 
     void addItem(Item item);
     Item getItem();
+
+    void removeItem();
 }

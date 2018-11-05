@@ -6,6 +6,7 @@ import pl.pwmarcz.duckquest.tiles.Tile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Collection;
 
 public class Game {
     GameMap map = new GameMap();
@@ -16,6 +17,7 @@ public class Game {
 
         while (!quit) {
             drawMap();
+            drawInventory();
             System.out.println("Command? [udlrq]");
             String command = consoleIn.readLine();
 
@@ -32,6 +34,8 @@ public class Game {
                 case "l":
                     move(-1, 0);
                     break;
+                case "p":
+                    pickUp();
                 case "r":
                     move(1, 0);
                     break;
@@ -39,8 +43,23 @@ public class Game {
         }
     }
 
+    private void drawInventory() {
+        Collection<Item> items = map.getPlayer().getItems();
+        System.out.print("Inventory: ");
+        for (Item item: items)
+            System.out.print(item.getName() + ", ");
+        System.out.println();
+    }
+
     private void move(int dx, int dy) {
         map.movePlayer(dx, dy);
+    }
+
+    private void pickUp() {
+        Item item = map.pickUp();
+        if (item != null) {
+            System.out.println("Picked up " + item.getName());
+        }
     }
 
     void drawMap() {
