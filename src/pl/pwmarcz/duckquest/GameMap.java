@@ -31,26 +31,25 @@ public class GameMap {
     public GameMap() {
         width = DEFAULT_WIDTH;
         height = DEFAULT_HEIGHT;
-        tiles = new Tile[height][width];
+        tiles = new Tile[width][height];
 
         int playerX = 0, playerY = 0;
-
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 switch(DEFAULT_MAP[y].charAt(x)) {
                     case '#':
-                        tiles[y][x] = new WallTile();
+                        tiles[x][y] = new WallTile();
                         break;
                     case '.':
-                        tiles[y][x] = new FloorTile();
+                        tiles[x][y] = new FloorTile();
                         break;
                     case '@':
-                        tiles[y][x] = new FloorTile();
+                        tiles[x][y] = new FloorTile();
                         playerX = x;
                         playerY = y;
                         break;
                     default:
-                        tiles[y][x] = new EmptyTile();
+                        tiles[x][y] = new EmptyTile();
                         break;
                 }
             }
@@ -61,15 +60,15 @@ public class GameMap {
 
     public int getWidth() { return width; }
     public int getHeight() { return height; }
-    public Tile getTile(int y, int x) { return tiles[y][x]; }
+    public Tile getTile(int x, int y) { return tiles[x][y]; }
     public Player getPlayer() { return player; }
 
-    public void movePlayer(int dy, int dx) {
+    public void movePlayer(int dx, int dy) {
         int newX = player.getX() + dx;
         int newY = player.getY() + dy;
-        Tile newTile = getTile(newY, newX);
+        Tile newTile = getTile(newX, newY);
         if (newTile.canEnter()) {
-            player.moveTo(newY, newX);
+            player.moveTo(newX, newY);
         }
     }
 }

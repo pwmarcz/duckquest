@@ -23,23 +23,23 @@ public class Game {
                     quit = true;
                     break;
                 case "u":
-                    move(-1, 0);
-                    break;
-                case "d":
-                    move(1, 0);
-                    break;
-                case "l":
                     move(0, -1);
                     break;
-                case "r":
+                case "d":
                     move(0, 1);
+                    break;
+                case "l":
+                    move(-1, 0);
+                    break;
+                case "r":
+                    move(1, 0);
                     break;
             }
         }
     }
 
-    private void move(int dy, int dx) {
-        map.movePlayer(dy, dx);
+    private void move(int dx, int dy) {
+        map.movePlayer(dx, dy);
     }
 
     void drawMap() {
@@ -51,7 +51,7 @@ public class Game {
                 if (x == playerX && y == playerY) {
                     System.out.print(player.getChar());
                 } else {
-                    Tile tile = map.getTile(y, x);
+                    Tile tile = map.getTile(x, y);
                     System.out.print(tile.getChar());
                 }
             }

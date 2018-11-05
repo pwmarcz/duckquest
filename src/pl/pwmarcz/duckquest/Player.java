@@ -20,8 +20,8 @@ public class Player {
         return '@';
     }
 
-    public void moveTo(int y, int x) {
-        this.y = y;
+    public void moveTo(int x, int y) {
         this.x = x;
+        this.y = y;
     }
 }
