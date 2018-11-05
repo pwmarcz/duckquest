@@ -91,4 +91,18 @@ public class GameMap {
     private Tile getPlayerTile() {
         return getTile(player.getX(), player.getY());
     }
+
+    public char getChar(int x, int y) {
+        if (x == player.getX() && y == player.getY()) {
+            return player.getChar();
+        } else {
+            Tile tile = getTile(x, y);
+            Item item = tile.getItem();
+            if (item != null) {
+                return item.getChar();
+            } else {
+                return tile.getChar();
+            }
+        }
+    }
 }

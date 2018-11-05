@@ -69,21 +69,7 @@ public class Game {
         int playerY = player.getY();
         for (int y = 0; y < map.getHeight(); y++) {
             for (int x = 0; x < map.getWidth(); x++) {
-                char c = ' ';
-
-                if (x == playerX && y == playerY) {
-                    c = player.getChar();
-                } else {
-                    Tile tile = map.getTile(x, y);
-                    Item item = tile.getItem();
-                    if (item != null) {
-                        c = item.getChar();
-                    } else {
-                        c = tile.getChar();
-                    }
-                }
-
-                System.out.print(c);
+                System.out.print(map.getChar(x, y));
             }
             System.out.println();
         }
