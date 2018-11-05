@@ -13,10 +13,8 @@ public class DoorTile extends AbstractBaseTile {
 
     @Override
     public boolean canEnter(Player player) {
-        for (Item item: player.getItems()) {
-            if (item.getName() == "key") {
-                open = true;
-            }
+        if (player.hasItem("key")) {
+            open = true;
         }
         return open;
     }
