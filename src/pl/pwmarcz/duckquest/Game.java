@@ -1,5 +1,6 @@
 package pl.pwmarcz.duckquest;
 
+import pl.pwmarcz.duckquest.items.Item;
 import pl.pwmarcz.duckquest.tiles.Tile;
 
 import java.io.BufferedReader;
@@ -48,12 +49,21 @@ public class Game {
         int playerY = player.getY();
         for (int y = 0; y < map.getHeight(); y++) {
             for (int x = 0; x < map.getWidth(); x++) {
+                char c = ' ';
+
                 if (x == playerX && y == playerY) {
-                    System.out.print(player.getChar());
+                    c = player.getChar();
                 } else {
                     Tile tile = map.getTile(x, y);
-                    System.out.print(tile.getChar());
+                    Item item = tile.getItem();
+                    if (item != null) {
+                        c = item.getChar();
+                    } else {
+                        c = tile.getChar();
+                    }
                 }
+
+                System.out.print(c);
             }
             System.out.println();
         }

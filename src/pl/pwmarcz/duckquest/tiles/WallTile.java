@@ -1,6 +1,6 @@
 package pl.pwmarcz.duckquest.tiles;
 
-public class WallTile implements Tile {
+public class WallTile extends AbstractBaseTile {
     @Override
     public char getChar() {
         return '#';

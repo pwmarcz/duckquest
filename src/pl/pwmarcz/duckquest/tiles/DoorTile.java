@@ -1,13 +1,13 @@
 package pl.pwmarcz.duckquest.tiles;
 
-public class FloorTile extends AbstractBaseTile {
+public class DoorTile extends AbstractBaseTile {
     @Override
     public char getChar() {
-        return '.';
+        return '+';
     }
 
     @Override
     public boolean canEnter() {
-        return true;
+        return false;
     }
 }

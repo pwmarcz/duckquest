@@ -1,27 +1,25 @@
 package pl.pwmarcz.duckquest;
 
-import pl.pwmarcz.duckquest.tiles.EmptyTile;
-import pl.pwmarcz.duckquest.tiles.FloorTile;
-import pl.pwmarcz.duckquest.tiles.Tile;
-import pl.pwmarcz.duckquest.tiles.WallTile;
+import pl.pwmarcz.duckquest.items.KeyItem;
+import pl.pwmarcz.duckquest.tiles.*;
 
 public class GameMap {
     static String[] DEFAULT_MAP = new String[] {
-            "####################           ",
-            "#.....@............#    #######",
-            "#..................######     #",
-            "#........................     #",
-            "#..}...............######     #",
-            "#######+############    ###.###",
-            "       #.#                 #.# ",
-            "       #.#                 #.# ",
-            "       #.#                ##.##",
-            "     ###+####             #...#",
-            "     #.[....#             #.*.#",
-            "     #......#             #...#",
-            "     ########             #####",
+            " ####################           ",
+            " #.....@............#    #######",
+            " #..................######     #",
+            " #........................     #",
+            " #..}...............######     #",
+            " #######+############    ###.###",
+            "       #.#                 #.#  ",
+            "       #.#                 #.#  ",
+            "       #.#                ##.## ",
+            "     ###+####             #...# ",
+            "     #.[....#             #.*.# ",
+            "     #......#             #...# ",
+            "     ########             ##### ",
     };
-    static int DEFAULT_WIDTH = 31;
+    static int DEFAULT_WIDTH = 32;
     static int DEFAULT_HEIGHT = 13;
 
     private int width, height;
@@ -47,6 +45,13 @@ public class GameMap {
                         tiles[x][y] = new FloorTile();
                         playerX = x;
                         playerY = y;
+                        break;
+                    case '}':
+                        tiles[x][y] = new FloorTile();
+                        tiles[x][y].addItem(new KeyItem());
+                        break;
+                    case '+':
+                        tiles[x][y] = new DoorTile();
                         break;
                     default:
                         tiles[x][y] = new EmptyTile();
