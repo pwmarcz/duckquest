@@ -36,6 +36,7 @@ public class Game {
                     break;
                 case "p":
                     pickUp();
+                    break;
                 case "r":
                     move(1, 0);
                     break;
