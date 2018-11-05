@@ -18,7 +18,7 @@ public class Game {
         while (!quit) {
             drawMap();
             drawInventory();
-            System.out.println("Command? [udlrq]");
+            System.out.println("Command? [udlrpq]");
             String command = consoleIn.readLine();
 
             switch (command) {
