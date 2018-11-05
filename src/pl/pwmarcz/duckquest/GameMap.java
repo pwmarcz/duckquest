@@ -73,7 +73,7 @@ public class GameMap {
         int newX = player.getX() + dx;
         int newY = player.getY() + dy;
         Tile newTile = getTile(newX, newY);
-        if (newTile.canEnter()) {
+        if (newTile.canEnter(player)) {
             player.moveTo(newX, newY);
         }
     }

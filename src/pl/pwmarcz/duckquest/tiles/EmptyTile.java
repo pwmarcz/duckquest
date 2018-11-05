@@ -1,5 +1,7 @@
 package pl.pwmarcz.duckquest.tiles;
 
+import pl.pwmarcz.duckquest.Player;
+
 public class EmptyTile extends AbstractBaseTile {
     @Override
     public char getChar() {
@@ -7,7 +9,7 @@ public class EmptyTile extends AbstractBaseTile {
     }
 
     @Override
-    public boolean canEnter() {
+    public boolean canEnter(Player player) {
         return false;
     }
 }
