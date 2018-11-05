@@ -10,13 +10,16 @@ public class Game {
     }
 
     void drawMap() {
+        Player player = map.getPlayer();
+        int playerX = player.getX();
+        int playerY = player.getY();
         for (int y = 0; y < map.getHeight(); y++) {
             for (int x = 0; x < map.getWidth(); x++) {
-                Tile tile = map.getTile(y, x);
-                if (tile != null) {
-                    System.out.print(tile.getChar());
+                if (x == playerX && y == playerY) {
+                    System.out.print(player.getChar());
                 } else {
-                    System.out.print(' ');
+                    Tile tile = map.getTile(y, x);
+                    System.out.print(tile.getChar());
                 }
             }
             System.out.println();

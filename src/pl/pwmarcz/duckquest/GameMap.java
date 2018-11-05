@@ -26,11 +26,14 @@ public class GameMap {
 
     private int width, height;
     private Tile[][] tiles;
+    private Player player;
 
     public GameMap() {
         width = DEFAULT_WIDTH;
         height = DEFAULT_HEIGHT;
         tiles = new Tile[height][width];
+
+        int playerX = 0, playerY = 0;
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
@@ -41,15 +44,23 @@ public class GameMap {
                     case '.':
                         tiles[y][x] = new FloorTile();
                         break;
+                    case '@':
+                        tiles[y][x] = new FloorTile();
+                        playerX = x;
+                        playerY = y;
+                        break;
                     default:
                         tiles[y][x] = new EmptyTile();
                         break;
                 }
             }
         }
+
+        player = new Player(playerX, playerY);
     }
 
     public int getWidth() { return width; }
     public int getHeight() { return height; }
     public Tile getTile(int y, int x) { return tiles[y][x]; }
+    public Player getPlayer() { return player; }
 }
